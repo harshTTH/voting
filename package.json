@@ -3,14 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "repository" :
-  { "type" : "git"
-  , "url" : "https://github.com/harshTTH/voting.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/harshTTH/voting.git"
   },
   "scripts": {
     "test": "node server.js",
     "start": "node server.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
 }
