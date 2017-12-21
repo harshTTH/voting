@@ -4,7 +4,7 @@ var style = require('../styles.css');
 const App = (props)=>{
     return(
         <div>
-            <h1>Simple JSX</h1>
+            Hello JS
         </div>
     );
 }

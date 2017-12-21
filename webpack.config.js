@@ -1,39 +1,29 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: './public/index.html',
-  filename: 'index.html',
-  inject: 'body'
-})
-
+const path = require('path');
+const webpack = require('webpack');
 module.exports = {
-    entry: ['./public/client.js'],
+    devtool: 'eval',
+    entry: ['webpack-hot-middleware/client',
+            './public/client'],
     output: {
-        path: __dirname  + '/public',
+        path: path.join(__dirname,'dist'),
         filename: 'bundle.js',
+        publicPath:'/static/'
     },
+    plugins: [
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.NoEmitOnErrorsPlugin()
+    ],
     module: {
-        loaders: [
-            {
-                loader: 'babel-loader',
-                test: /\.js$/,
-                exclude: /node_modules/
-            },
-            {
-                test: /\.css$/,
-                loader: 'style-loader'
-            },
-            {
-                test: /\.css$/,
-                loader: 'css-loader',
-                query: {
-                  modules: true,
-                  localIdentName: '[name]__[local]___[hash:base64:5]'
-                }
-              }
-        ]
-    },
-    devServer: {
-        port: 5000
-    },
-    plugins: [HtmlWebpackPluginConfig]
+      loaders: [{
+        test: /\.js$/,
+        loaders: ['babel-loader'],
+        include: path.join(__dirname, 'public')
+      }, {
+        test: /\.jpg/,
+        loader: 'file'
+      }, {
+        test: /\.css/,
+        loaders: ['style-loader', 'css-loader']
+      }]
+    }
 };
