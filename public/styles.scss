@@ -1,0 +1,66 @@
+$header-color:rgb(10, 145, 50);
+$theme-color:rgb(1, 70, 70);
+$header-text-color:rgb(255, 255, 255);
+$bodyBack: rgb(255, 255, 255);
+body{
+    font-family: 'Open Sans', sans-serif;
+    background:$bodyBack;
+    font-size: 1.2vmax;
+}
+#navHead{
+    background-color: $header-color;
+    a{
+        font-weight: bolder;
+        text-decoration: none;
+        color:white;
+        &:hover{
+            text-decoration: none;
+            color: #fff;
+        }
+    }
+}
+
+#foot{
+    width: 100%;
+    color: #fff;
+    margin: auto;
+    background: $header-color;
+    a{
+        text-decoration: none;
+        color:rgba(250, 204, 204, 0.795);
+        &:hover{
+            text-decoration: none;
+           color:white;
+           font-style: oblique;
+        }
+    }
+}
+#fullBack{
+    color: white;
+    height: 100%;
+    background-color: rgb(6, 88, 71);  
+    #fullback-banner{
+        font-size: 5vmax;
+        height: 100%;
+        padding:5%;
+        font-weight: bolder;
+        line-height:170%;
+        background-color: rgb(20, 2, 87);
+    }
+    form{
+        font-size: 2.2vmax;
+        width:30%;
+        margin-left: 5%;
+        a{
+            display: block;
+            float: right;
+            color: #fff;
+            text-decoration: underline;
+            font-size:0.6em;
+            &:hover{
+                text-decoration: none;
+                color: #fff;
+            }
+        }
+    }
+}

@@ -1,39 +1,36 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: './public/index.html',
-  filename: 'index.html',
-  inject: 'body'
-})
-
+const path = require('path');
+const webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
-    entry: ['./public/client.js'],
+    entry:[
+      "react-hot-loader/patch",
+      "webpack/hot/only-dev-server",
+      'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
+      path.join(__dirname,'public','client.js')
+    ],
     output: {
-        path: __dirname  + '/public',
-        filename: 'bundle.js',
+      path:path.join(__dirname+"/static"),
+      filename:"bundle.js",
+      publicPath:"/static/"
     },
+    plugins:[
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.NoEmitOnErrorsPlugin(),
+      new ExtractTextPlugin('../public/styles.css', {
+        allChunks: true
+      })
+    ],
     module: {
-        loaders: [
-            {
-                loader: 'babel-loader',
-                test: /\.js$/,
-                exclude: /node_modules/
-            },
-            {
-                test: /\.css$/,
-                loader: 'style-loader'
-            },
-            {
-                test: /\.css$/,
-                loader: 'css-loader',
-                query: {
-                  modules: true,
-                  localIdentName: '[name]__[local]___[hash:base64:5]'
-                }
-              }
-        ]
-    },
-    devServer: {
-        port: 5000
-    },
-    plugins: [HtmlWebpackPluginConfig]
+      loaders: [{
+        test: /\.js$/,
+        loaders: ['babel-loader'],
+        include: path.join(__dirname, 'public')
+      }, {
+        test: /\.jpg/,
+        loader: 'file'
+      },{
+          test: /\.scss$/,
+          loader: 'style-loader!css-loader?modules-loader!sass-loader'
+      }]
+    }
 };
