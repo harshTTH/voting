@@ -10,7 +10,6 @@ const Welcome = ()=>{
         </div> 
     );
 }
-
 const Banner = (props)=>{
     return(
         <div id="fullback-banner" className="text-center" dangerouslySetInnerHTML={{__html:props.message}}>
