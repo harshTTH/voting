@@ -1,7 +1,8 @@
-$header-color:rgb(10, 145, 50);
-$theme-color:rgb(1, 70, 70);
+$header-color:rgb(0, 156, 148);
+$theme-color:rgb(255, 255, 255);
 $header-text-color:rgb(255, 255, 255);
 $bodyBack: rgb(255, 255, 255);
+$font-color:rgb(31, 31, 31);
 body{
     font-family: 'Open Sans', sans-serif;
     background:$bodyBack;
@@ -29,16 +30,16 @@ body{
         text-decoration: none;
         color:rgba(250, 204, 204, 0.795);
         &:hover{
-            text-decoration: none;
+           text-decoration: none;
            color:white;
            font-style: oblique;
         }
     }
 }
 #fullBack{
-    color: white;
+    color:$theme-color;
     height: 100%;
-    background-color: rgb(6, 88, 71);  
+    background-color:$theme-color;  
     #fullback-banner{
         font-size: 5vmax;
         height: 100%;
@@ -51,15 +52,20 @@ body{
         font-size: 2.2vmax;
         width:30%;
         margin-left: 5%;
+        color:$font-color;
+        input{
+            &:focus{
+                outline: none;
+            }
+        }
         a{
             display: block;
             float: right;
-            color: #fff;
             text-decoration: underline;
             font-size:0.6em;
             &:hover{
                 text-decoration: none;
-                color: #fff;
+                color:$font-color;
             }
         }
     }

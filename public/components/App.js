@@ -1,24 +1,16 @@
 const React = require('react');
 const Router = require('react-router-dom').BrowserRouter;
-const Route = require('react-router-dom').Route;
-const browserHistory = require('react-router-dom').browserHistory;
-const WelcomePage = require('./welcome').welcome;
-const SignUp = require('./SignUp');
-const Header = require('./Header');
-const Footer = require('./Footer');
-var styles = require('../styles.scss');
+const Root = require('./Root');
+const Routes = require('./routes');
+const styles = require('../styles.scss');
 
-const App = (props)=>{
+const App = ()=>{
     return(
-        <Router history={browserHistory}>
-            <div className="d-flex flex-column"
-                style={{height:"100%"}}>
-                <Header/>
-                <Route exact path="/" component={WelcomePage}/>
-                <Route path="/signup" component={SignUp}/>
-                <Footer/>
-            </div>    
-        </Router>    
+        <Router>
+            <Root>
+                <Routes/> 
+            </Root>
+        </Router>  
     );
 }
 

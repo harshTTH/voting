@@ -1,30 +1,29 @@
 const path = require('path');
 const webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-module.exports = {
+//var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const clientSide = {
     entry:[
       "react-hot-loader/patch",
       "webpack/hot/only-dev-server",
-      'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
+      'webpack-hot-middleware/client',
       path.join(__dirname,'public','client.js')
     ],
     output: {
-      path:path.join(__dirname+"/static"),
+      path:path.join(__dirname,'static'),
       filename:"bundle.js",
       publicPath:"/static/"
     },
     plugins:[
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoEmitOnErrorsPlugin(),
-      new ExtractTextPlugin('../public/styles.css', {
+      /*new ExtractTextPlugin('../public/styles.css', {
         allChunks: true
-      })
+      })*/
     ],
     module: {
       loaders: [{
         test: /\.js$/,
-        loaders: ['babel-loader'],
-        include: path.join(__dirname, 'public')
+        loader: 'babel-loader',
       }, {
         test: /\.jpg/,
         loader: 'file'
@@ -34,3 +33,6 @@ module.exports = {
       }]
     }
 };
+
+
+module.exports = clientSide;

@@ -1,7 +1,7 @@
 const React = require('react');
 const Login = require('./Login');
 
-const Welcome = ()=>{
+const Welcome = ({route})=>{
     let msg = "Welcome to Groupz <br/> LogIn Or SignUp <br/> To Continue";
     return(
         <div id="fullback" className="d-flex flex-row align-items-center">
