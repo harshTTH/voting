@@ -25,7 +25,8 @@ class SignUpForm extends React.Component{
         this.handleChange = this.handleChange.bind(this);
     } 
     render(){
-        let color = validatePass(this.state.inputPass)?"green":"red";
+        let accept = validatePass(this.state.inputPass);
+        let color = accept?"green":"red";
         let indicator = {
             borderWidth:"3px",
             ':focus':{
@@ -33,31 +34,32 @@ class SignUpForm extends React.Component{
             }
         };
         return(
-            <form action="/newusr/pic">
+            <form action="/newusr" method="post">
+                <div style={{marginBottom:"8%"}}><i className="material-icons">assignment</i>SignUp</div>
                 <div className="form-group">
                     <label htmlFor="newusr-name">Name</label>
-                    <input type="text" id="newusr-name" placeholder="Enter Name"
-                    className="form-control" onChange={this.handleChange} value={this.state.inputName}/>
+                    <input name="name" type="text" id="newusr-name" placeholder="Enter Name"
+                    className="form-control" onChange={this.handleChange} value={this.state.inputName} required/>
                 </div>
                 <div className="form-group">
                     <label htmlFor="newusr-email">Email</label>
-                    <input type="email" id="newusr-email" placeholder="Enter Email"
-                    className="form-control" onChange={this.handleChange} value={this.state.inputEmail}/>
+                    <input name="email" type="email" id="newusr-email" placeholder="Enter Email"
+                    className="form-control" onChange={this.handleChange} value={this.state.inputEmail} required/>
                 </div>
                 <div className="form-group">
                     <label htmlFor="newusr-pass">Password</label>
-                    <input type="password" id="newusr-pass" placeholder="Create Password"
-                    className="form-control"  onChange={this.handleChange} value={this.state.inputPass} style={indicator}/>
+                    <input  name="pass" type="password" id="newusr-pass" placeholder="Create Password"
+                    className="form-control"  onChange={this.handleChange} value={this.state.inputPass} style={indicator} required/>
                     <small className="form-text text-muted h6">Password must contain digits and characters</small>
                 </div>
                 <div className="form-check h5">
                     <label htmlFor="newusr-terms" className="form-check-label">
-                        <input type="checkbox" id="newusr-terms"
-                        className="form-check-input" value=""/>
+                        <input name="tndc" type="checkbox" id="newusr-terms"
+                        className="form-check-input" value="" required/>
                         I Accept Terms & Conditions
                     </label>
                 </div>
-                <button className="btn btn-outline-primary" type="submit">Next</button>
+                <button className="btn btn-outline-primary" type="submit" disabled={!accept}>Next</button>
                 <br/>
                 <Link to="/">Already Have An Account LogIn</Link>      
             </form>

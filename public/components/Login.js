@@ -7,6 +7,7 @@ class Login extends React.Component{
     render(){
         return(
             <form action="/usrlogin" method="post">
+                <div style={{marginBottom:"8%"}}><i className="material-icons">lock</i>LogIn</div>
                 <div className="form-group">
                     <label htmlFor="email">Email Address</label>
                     <input name="email" className="form-control" type="email" id="email" placeholder="Enter Email" required/>

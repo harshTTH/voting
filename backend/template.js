@@ -1,4 +1,6 @@
-<html>
+module.exports = function(markup){
+    return `
+    <html>
     <head>
         <title>Groupz</title>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -7,7 +9,8 @@
         rel="stylesheet">
     </head>
     <body>
-        <div id="root"><%- markup -%></div>
+        <div id="root"><${markup}></div>
         <script src="/assets/bundle.js"></script>
     </body>
-</html>
+    </html>`;
+}
